@@ -1,0 +1,15 @@
+COMANDOS LINUX -> CENTOS Red Had
+{
+	- ping DESTINATION
+		> Informa se há retorno de pacotes ao endereço, ou seja, informa se há internet
+	- ip add show
+		> Informa se há endereço IP na máquina
+	- ifup ENP0S3
+		> Estabelece uma conexão com o roteador para definir o ip da máquina
+	- clear
+		> Limpa a tela
+	- hostname
+		> Exibe o nome da máquina
+	- hotname SERVER-PEDRO
+		> Redefine o nome da máquina
+}
