@@ -12,4 +12,6 @@ COMANDOS LINUX -> CENTOS Red Had
 		> Exibe o nome da máquina
 	- hotname SERVER-PEDRO
 		> Redefine o nome da máquina
+	- sefacl -m g:Diretoria:rwx tecnologia
+		> É necessário o uso de ACL (Access Control Lists), pois o Linux permiteque apenas um grupo seja dono de uma pasta. Logo, setfacl adiciona permissões adicionais ao grupo diretoria na pasta tecnologia. -m é de "modify". g é para dizer q é um grupo. :Diretoria é o grupo. :rwx são as permissões. tecnologia é a pasta onde esse grupo terá acesso
 }
