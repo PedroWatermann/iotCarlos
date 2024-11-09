@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #1F4428;
+    align-items: center;
+}
+
+.containers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #107E2A;
+    border-radius: 15px;
+    background-color: #AC8F6C;
+}
+
+img{
+    width: 100%;
+    height: 250px;
+    margin-top: -20%;
+    border-bottom: 5px solid #107E2A;
+    border-radius: 15px;
+    padding-bottom: 5px;
+}
+
+form{
+    width: 100%;
+    padding: 20px;
+}
+
+.btn-success {
+    background-color: #107E2A;
+}
