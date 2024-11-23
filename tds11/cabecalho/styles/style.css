@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 900px;
+    background-color: aqua;
+}
+
+header {
+    background: url('../images/banner.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50%;
+    text-align: center;
+    width: 100%;
+    border-radius: 0 0 85% 85% / 80%;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    position: relative;
+}
+
+h1 {
+    font-family: cursive;
+    font-size: 80px;
+    margin: 10px 0 30px 0;
+    color: whitesmoke;
+    text-shadow: 5px 5px 10px blue;
+}
+
+h3 {
+    font-size: 50px;
+}
+
+h3, header p {
+    color: rgba(230, 230, 230, 0.9);
+    margin-bottom: 30px;
+    text-shadow: 4px 4px 3px black;
+}
+
+button {
+    background-color: transparent;
+    height: 50px;
+    width: 100px;
+    border: 3px solid white;
+    color: whitesmoke;
+    border: 2px double white; 
+    border-radius: 0 50% / 15%;
+    backdrop-filter: blur(2px); 
+    transition: backdrop-filter 0.3s ease;
+    cursor: pointer;
+    box-shadow: 4px 4px 3px white;
+
+    position: absolute;
+    bottom: 0; 
+    top: 85%;
+    left: 50%; 
+    transform: translateX(-50%);
+}
+button:hover { 
+    backdrop-filter: blur(10px);
+}

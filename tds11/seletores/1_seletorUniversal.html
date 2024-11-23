@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletor</title>
+    <style>
+        /*Seleciona todos o selementos
+        * {
+            color: green;
+        }
+        */
+
+        /*Seleciona por namespace*/
+        * [lang^=pt] {
+            color: green;
+        }
+        /*https://www.w3schools.com/cssref/css_selectors.php*/
+
+        *.atencao {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lista de seleção</h2>
+
+    <p>O seletor universal é indicado por <strong>'*'</strong>. Ele seleciona todo o documento.</p>
+    <p>A partir do CSS3, o * pode ser combinado com namespaces.</p>
+
+    <ul>
+        <li><strong>ns | *</strong> - aplica a todos os elemetos no namespace <em>ns</em></li>
+        <li><strong>* | *</strong> - aplica a todos os elementos</li>
+        <li><strong> | *</strong> - aplica a todos os elementos que não têm namespace declarado</li>
+    </ul>
+
+    <h2>Sintaxe</h2>
+
+    <p>
+        * {
+            propriedade do estilo
+        }
+    </p>
+
+    <h2>Exemplos</h2>
+
+    <p class="atencao"><span lang="pt-br">Um span verde</span> e um parágrafo vermelho.</p>
+    <p id="conteudoPrincipal" lang="pt-br"><span class="atencao">Um span vermelho</span> e um parágrafo verde</p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletor</title>
+    <style>
+        .vermelho {
+            color: red;
+        }
+
+        .amarelo-bg {
+            background-color: yellow;
+        }
+
+        .elegante {
+            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Seletor de Classe </h1>
+    <p> O seletor de classe corresponde aos elmentos com base no conteúdo 
+        de seus atributos <strong>class</strong>.
+    <h2> Sintaxe</h2>
+    <p>.class_name {propriedades de estilo}</p>
+    <p>Observe que isso é o mesmo que o seletor de atributo.</p>
+ 
+    <hr>
+
+    <p>Todos os elementos com a class="espacoso"</br>
+        .espacoso{</br>
+            maringa:2em;</br>
+        }
+
+        <hr>
+
+        Todos os elementos "li" com class="espacoso"</br>
+        li.espacoso{</br>
+            margin: 2em</br>
+        }
+
+        <hr>
+
+        Todos os elementos "li" cujo conteúdo do atributo class possua "espacoso" e "elegante"</br>
+        li.espacoso.elegante{</br>
+            margin:2em;</br>
+        }
+
+        <hr>
+        
+        <h2> Exemplo1 </h2>
+        <p class="vermelho">Este parágrafo tem um texto vermelho.</p>
+        <p class="vermelho amarelo-bg">Este paragráfo possui um texnto em vermelho e fundo amarelo.</p>
+        <p class="vermelho elegante">Este parágrafo possui um texto em vermelho e uma propriedade de estilo "elegante".</p>
+        <p>Este é um parágrafo comum.</p>
+
+        <hr>
+
+        <h2>Exemplo 2</h2>
+    </p>
+</body>
+</html>
