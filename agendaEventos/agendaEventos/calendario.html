@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Eventos</title>
+    <link rel="stylesheet" href="styles/calendario.css">
+    <link rel="shortcut icon" href="icons/calendar.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <img src="images/calendar.png" alt="Logo do site">
+
+        <h1>Agenda de Eventos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="calendario.html" id="calendario">Calendário</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dropdown">
+            <button class="dropbtn">Filtro</button>
+            <div class="dropdown-content">
+                <a href="calendario.html?filter=day">Diário</a>
+                <a href="calendario.html?filter=week">Semanal</a>
+                <a href="calendario.html?filter=month">Mensal</a>
+            </div>
+        </div>
+
+        <div class="divTabela">
+            
+            <table id="calendar">
+                <thead>
+                    <tr id="mesAtual">
+                        
+                    </tr>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody id="week">
+                    <!--<tr>
+                        <td>
+                            <div class="container">
+                                <p class="day">1</p>
+                                <p class="content"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p class="day">2</p>
+                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
+                                    commodo tempor. </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p class="day">3</p>
+                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
+                                    commodo tempor. </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p class="day">4</p>
+                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
+                                    commodo tempor. </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p class="day">5</p>
+                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
+                                    commodo tempor. </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p class="day">6</p>
+                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor. Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Per aumento de cachacis, eu reclamis. Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta. </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p class="day">7</p>
+                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
+                                    commodo tempor. </p>
+                            </div>
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <aside>
+        <h3>Contato:</h3>
+        <a href="https://github.com/pedrowatermann" target="_blank">
+            <p>&#64;pedrowatermann</p>
+        </a>
+    </aside>
+
+    <footer>
+        <p>&copy; 2024 Watermann, P. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="scripts/calendario.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,333 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    font-size: 20px;
+}
+
+body {
+    background-color: rgb(32, 32, 32);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+}
+
+header {
+    display: flex;
+    padding: 5px;
+    margin: 0 0 10px 0;
+    text-align: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+header img {
+    height: 36px;
+    width: 36px;
+    margin-right: 10px;
+    padding: 3px;
+    border: 1px solid white;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+header h1 {
+    margin: 10px auto;
+    flex: 1;
+}
+
+header nav {
+    flex-basis: 100%;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+header a {
+    color: whitesmoke;
+    text-decoration: none;
+    margin: 2px 5px;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+main {
+    flex: 1;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main table {
+    width: 100%;
+    margin: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+main thead th {
+    font-family: cursive;
+}
+
+main th,
+td {
+    width: 14.28%;
+    height: 0;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border: 1px solid whitesmoke;
+    padding: 2px;
+}
+
+main td::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+main th:first-child, td:first-child {
+    border-left: none;
+}
+
+main th:last-child, td:last-child {
+    border-right: none;
+}
+
+main tr:first-child th {
+    border-top: none;
+}
+
+main tr:last-child td {
+    border-bottom: none;
+}
+
+aside {
+    position: relative;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 2px;
+    font-size: 0.7em;
+}
+
+aside a {
+    margin: 0;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+aside a:hover {
+    text-decoration: underline;
+}
+
+aside a:visited {
+    color: grey;
+}
+
+footer {
+    font-size: 0.6em;
+    position: relative;
+    width: 100%;
+    text-align: right;
+}
+
+.divTabela {
+    border: 1px solid whitesmoke;
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.day {
+    text-align: center;
+    height: fit-content;
+    font-weight: bold;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.content {
+    font-size: 0.75em;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px;
+    word-wrap: break-word;
+    transition: all 0.1s ease-in-out;
+}
+
+.content:hover {
+    padding: 5px;
+    overflow: visible;
+    text-overflow: unset;
+    overflow-wrap: break-word;
+
+    background-color: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+
+    border-radius: 10px;
+}
+
+.glow {
+    background-color: transparent;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+    -moz-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+    box-shadow: inset 0px 0px 10px 0px rgba(45, 255, 196, 1);
+}
+
+.page {
+    border-radius: 20px;
+    padding: 2px 7px;
+    box-shadow: inset 0px 0px 5px rgba(245, 245, 245, 0.45);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 0px auto 10px auto;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    font-weight: bold;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(245, 245, 245, 0.5);
+}
+
+.dropbtn:hover {
+    box-shadow: inset 0 0 20px rgba(245, 245, 245, 0.5);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+}
+
+.dropdown-content a {
+    color: whitesmoke;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(245, 245, 245, 0.25);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.mesAtual2{
+    font-weight: 800;
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 14px;
+    }
+
+    header img {
+        width: 25px;
+        height: 25px;
+        padding: 3px;
+        border-radius: 50%;
+    }
+
+    header a {
+        font-size: 0.9em;
+    }
+
+    main td {
+        aspect-ratio: auto / 1;
+    }
+
+    .day {
+        font-size: 0.8em;
+    }
+
+    .content {
+        font-size: 0.75em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .content.expanded {
+        overflow: visible;
+        text-overflow: unset;
+        overflow-wrap: break-word;
+        padding: 1px;
+
+        background-color: rgba(128, 128, 128, 0.5);
+        backdrop-filter: blur(3px);
+        z-index: 1;
+
+        border-radius: 10px;
+    }
+
+    .glow {
+        background-color: transparent;
+        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+        -moz-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+        box-shadow: inset 0px 0px 10px 0px rgba(45, 255, 196, 1);
+    }
+
+    .dropbtn {
+        padding: 6px 10;
+        font-size: 1em; 
+    }
+
+    .dropdown-content {
+        min-width: 120px;
+    }
+
+    .dropdown-content a {
+        font-size: 0.9;
+    }
+}

@@ -1,0 +1,242 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    font-size: 20px;
+}
+
+body {
+    background-color: rgb(32, 32, 32);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+}
+
+header {
+    display: flex;
+    padding: 5px;
+    margin: 0 0 10px 0;
+    text-align: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+header img {
+    height: 36px;
+    width: 36px;
+    margin-right: 10px;
+    padding: 3px;
+    border: 1px solid white;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+header h1 {
+    margin: 10px auto;
+    flex: 1;
+}
+
+header nav {
+    flex-basis: 100%;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+header a {
+    color: whitesmoke;
+    text-decoration: none;
+    margin: 2px 5px;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+main {
+    margin: auto;
+    flex-direction: column;
+
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+}
+
+main label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: whitesmoke;
+}
+
+main input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+main input:focus, textarea:focus {
+    border-color: #5d9bfc;
+    background-color: #f1f8ff;
+    outline: none;
+}
+
+main textarea {
+    resize: none;
+}
+
+main label[for="title"]:after,
+label[for="date"]:after {
+    content: " *";
+    color: tomato;
+}
+
+main button[type="submit"] {
+    width: 100%;
+    background-color: #5d9bfc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+main button[type="submit"]:hover {
+    background-color: #4688d1;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    flex: 1;
+    position: relative;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 2px;
+    font-size: 0.7em;
+}
+
+aside a {
+    margin: 0;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+aside a:hover {
+    text-decoration: underline;
+}
+
+aside a:visited {
+    color: grey;
+}
+
+footer {
+    font-size: 0.6em;
+    position: relative;
+    width: 100%;
+    text-align: right;
+}
+
+.date-time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-time-item {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.date-time-item:last-child {
+    margin-right: 0;
+}
+
+.informacao {
+    font-size: 0.7em;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.info:nth-child(2)::after {
+    content: " * ";
+    color: tomato;
+}
+
+.glow {
+    background-color: transparent;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+    -moz-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+    box-shadow: inset 0px 0px 10px 0px rgba(45, 255, 196, 1);
+}
+
+.page {
+    border-radius: 20px;
+    padding: 2px 7px;
+    box-shadow: inset 0px 0px 5px rgba(245, 245, 245, 0.45);
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 14px;
+    }
+
+    header img {
+        width: 25px;
+        height: 25px;
+        padding: 3px;
+        border-radius: 50%;
+    }
+
+    header a {
+        font-size: 0.9em;
+    }
+
+    .glow {
+        background-color: transparent;
+        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+        -moz-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
+        box-shadow: inset 0px 0px 10px 0px rgba(45, 255, 196, 1);
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+        max-width: 80%;
+    }
+}
