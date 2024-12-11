@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="calendario.html">Calendário</a></li>
-                <li><a href="eventos.html" id="eventos">Eventos</a></li>
+                <li><a href="eventos.php" id="eventos">Eventos</a></li>
             </ul>
         </nav>
     </header>
@@ -42,11 +42,11 @@
                 </div>
             </div>
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Editar</button>
 
             <div class="informacao">
                 <p class="info">são obrigatórios!</p>
-                <p class="info">Itens  com</p>
+                <p class="info">Itens com</p>
             </div>
         </form>
     </main>
