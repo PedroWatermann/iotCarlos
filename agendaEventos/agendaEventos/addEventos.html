@@ -1,20 +1,3 @@
-<?php
-$id = $_GET["id"] ?? 0;
-$titulo = $_GET["titulo"] ?? 'Undefined';
-
-if ($id < 0) {
-    echo"
-        <script>
-            alert('Deseja mesmo excluir o evento $titulo?');
-        </script>
-    ";
-} else if ($id >= 1) {
-    header(header: "Location: editEventos.php?id=$id");
-} else if (empty($id)) {
-    header(header: "Location: addEventos.html");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,6 +6,7 @@ if ($id < 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de Eventos</title>
     <link rel="stylesheet" href="styles/eventos.css">
+    <link rel="stylesheet" href="styles/modal.css">
     <link rel="shortcut icon" href="icons/calendar.ico" type="image/x-icon">
 </head>
 
@@ -42,7 +26,7 @@ if ($id < 0) {
 
     <main>
         <form>
-            <label for="title">Título: </label>
+            <label for="title">Título:</label>
             <input type="text" name="title" id="title" required>
 
             <label for="description">Descrição:</label>
@@ -50,16 +34,16 @@ if ($id < 0) {
 
             <div class="date-time-container">
                 <div class="date-time-item"> 
-                    <label for="date">Data</label> 
+                    <label for="date">Data:</label> 
                     <input type="date" id="date" name="date" required> 
                     </div>
                 <div class="date-time-item"> 
-                    <label for="time">Hora</label> 
+                    <label for="time">Hora:</label> 
                     <input type="time" id="time" name="time"> 
                 </div>
             </div>
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit" id="cadastrar">Cadastrar</button>
 
             <div class="informacao">
                 <p class="info">são obrigatórios!</p>
@@ -77,6 +61,14 @@ if ($id < 0) {
     <footer>
         <p>&copy; 2024 Watermann, P. Todos os direitos reservados.</p>
     </footer>
+
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="success"></h2>
+            <p id="sucContent"></p>
+        </div>
+    </div>
 
     <script src="scripts/eventos.js"></script>
 </body>

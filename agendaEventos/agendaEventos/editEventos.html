@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de Eventos</title>
     <link rel="stylesheet" href="styles/eventos.css">
+    <link rel="stylesheet" href="styles/modal.css">
     <link rel="shortcut icon" href="icons/calendar.ico" type="image/x-icon">
 </head>
 
@@ -42,7 +43,7 @@
                 </div>
             </div>
 
-            <button type="submit">Editar</button>
+            <button type="submit" id="edit">Editar</button>
 
             <div class="informacao">
                 <p class="info">são obrigatórios!</p>
@@ -61,7 +62,15 @@
         <p>&copy; 2024 Watermann, P. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="scripts/eventos.js"></script>
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="success"></h2>
+            <p id="sucContent"></p>
+        </div>
+    </div>
+
+    <script src="scripts/editEventos.js"></script>
 </body>
 
 </html>
