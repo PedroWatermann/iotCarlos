@@ -1,0 +1,88 @@
+html {
+    font-size: 22px;
+}
+
+body {
+    display: flex;
+    height: 100svh;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.89em;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1em;
+    margin: 10px;
+    padding: 10px;
+}
+
+.modelo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+}
+
+.modelo-content {
+    background-color: transparent;
+    box-shadow: inset 0 0 20px rgba(245, 245, 245, 0.5);
+    color: whitesmoke;
+    border: 1px solid #888;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.content {
+    margin-top: 10px;
+}
+
+.btns {
+    display: flex;
+}
+
+#time {
+    margin-bottom: 10px;
+}
+
+#no {
+    border: 1px solid rgba(0, 128, 0, 0.8);
+    box-shadow: inset 0 0 20px rgba(0, 128, 0, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+#no:hover {
+    background-color: rgba(0, 128, 0, 0.8);
+}
+
+#yes {
+    border: 1px solid rgba(255, 99, 71, 0.5);
+    box-shadow: inset 0 0 10px rgba(255, 99, 71, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+#yes:hover {
+    background-color: rgba(255, 99, 71, 0.5);
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Eventos</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/delEventos.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="shortcut icon" href="icons/calendar.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="modelo">
+        <div class="modelo-content">
+            <h1 id="delete">Deseja excluir este evento?</h1>
+
+            <em>
+                <h3 class="content">Título:</h3>
+            </em>
+            <p id="title"></p>
+
+            <em>
+                <h3 class="content">Descrição:</h3>
+            </em>
+            <p id="description"></p>
+
+            <em>
+                <h3 class="content">Data:</h3>
+            </em>
+            <p id="date"></p>
+
+            <em>
+                <h3 class="content">Hora:</h3>
+            </em>
+            <p id="time"></p>
+
+            <div class="btns">
+                <button id="no">Não</button>
+                <button id="yes">Sim</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="success"></h2>
+            <p id="sucContent"></p>
+        </div>
+    </div>
+
+    <script src="scripts/delEventos.js"></script>
+</body>
+
+</html>

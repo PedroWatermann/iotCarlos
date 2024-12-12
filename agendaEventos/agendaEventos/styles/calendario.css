@@ -100,11 +100,13 @@ main td::before {
     padding-top: 100%;
 }
 
-main th:first-child, td:first-child {
+main th:first-child,
+td:first-child {
     border-left: none;
 }
 
-main th:last-child, td:last-child {
+main th:last-child,
+td:last-child {
     border-right: none;
 }
 
@@ -179,21 +181,21 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0px;
-    word-wrap: break-word;
+    white-space: nowrap;
     transition: all 0.1s ease-in-out;
+    max-width: 90%;
 }
 
 .content:hover {
     padding: 5px;
     overflow: visible;
-    text-overflow: unset;
-    overflow-wrap: break-word;
 
     background-color: rgba(128, 128, 128, 0.5);
     backdrop-filter: blur(3px);
     z-index: 1;
 
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .glow {
@@ -264,8 +266,8 @@ footer {
     display: block;
 }
 
-.mesAtual2{
-    font-weight: 800;
+.ul_do_titulo {
+    padding-left: 20px;
 }
 
 @media (max-width: 400px) {
@@ -293,7 +295,8 @@ footer {
     }
 
     .content {
-        font-size: 0.75em;
+        font-size: 0.7em;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -309,6 +312,8 @@ footer {
         z-index: 1;
 
         border-radius: 10px;
+
+        width: 80px;
     }
 
     .glow {
@@ -320,7 +325,7 @@ footer {
 
     .dropbtn {
         padding: 6px 10;
-        font-size: 1em; 
+        font-size: 1em;
     }
 
     .dropdown-content {
@@ -329,5 +334,9 @@ footer {
 
     .dropdown-content a {
         font-size: 0.9;
+    }
+
+    .ul_do_titulo {
+        padding-left: 5px;
     }
 }

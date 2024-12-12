@@ -151,12 +151,22 @@ footer {
 
 .red {
     border: 1px solid rgba(255, 99, 71, 0.5);
-    box-shadow: inset 0 0 5px rgba(255, 99, 71, 0.5);
+    box-shadow: inset 0 0 10px rgba(255, 99, 71, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.red:hover {
+    background-color: rgba(255, 99, 71, 0.5);
 }
 
 .orange {
     border: 1px solid rgba(255, 166, 0, 0.5);
-    box-shadow: inset 0 0 5px rgba(255, 166, 0, 0.5);
+    box-shadow: inset 0 0 10px rgba(255, 166, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.orange:hover {
+    background-color: rgba(255, 166, 0, 0.5);
 }
 
 .glow {

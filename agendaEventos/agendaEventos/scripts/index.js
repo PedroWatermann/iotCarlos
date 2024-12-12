@@ -42,7 +42,11 @@ eventos.forEach(evento => {
         window.location.href = `editEventos.html?id=${evento.id}`;
     };
 
+    div.appendChild(del);
+    div.appendChild(edit);
+
     li.appendChild(a);
+    // li.appendChild(div);
     li.appendChild(del);
     li.appendChild(edit);
     
@@ -50,7 +54,7 @@ eventos.forEach(evento => {
 });
 
 function formatData( dt ) {
-    const data = new Date(dt); // Exemplo de data
+    /*const data = new Date(dt); // Exemplo de data
 
     // Extrair o dia, mês e ano
     const dia = String(data.getDate()).padStart(2, '0'); // Adiciona o zero à esquerda, se necessário
@@ -59,5 +63,11 @@ function formatData( dt ) {
     
     const dataFormatada = `${dia}/${mes}/${ano}`;
     
-    return dataFormatada;
+    return dataFormatada;*/
+
+    const data = dt.split("-");
+    const dia = data[2];
+    const mes = data[1];
+    const ano = data[0];
+    return dataFormatada = `${dia}/${mes}/${ano}`;
 }

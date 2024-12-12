@@ -1,4 +1,3 @@
-// Carrega os eventos
 const eventos = () => {
     const eventosSalvos = localStorage.getItem('eventos');
     if (eventosSalvos) {
@@ -8,14 +7,9 @@ const eventos = () => {
 };
 
 window.onload = () => {
-    const link = window.location.href;
-    if (link.includes("Eventos.html")) {
-        const ev = document.querySelector("#eventos");
-        ev.classList.add("page");
-    }
-
     const urlParams = new URLSearchParams(window.location.search);
     const id = Number(urlParams.get("id"));
+
     const titulo = document.getElementById("title");
     const descricao = document.getElementById("description");
     const data = document.getElementById("date");
@@ -25,24 +19,23 @@ window.onload = () => {
     const evento = eventosSalvos.find(evento => evento.id === id);
 
     if (evento) {
-        titulo.value = evento.titulo;
-        descricao.value = evento.descricao;
-        data.value = evento.data;
-        hora.value = evento.hora;
+        titulo.textContent = evento.titulo;
+        descricao.textContent = evento.descricao;
+        data.textContent = formatData(evento.data);
+        hora.textContent = evento.hora;
 
-        document.getElementById("edit").addEventListener("click", (ev) => {
+        document.getElementById("yes").addEventListener("click", (ev) => {
             ev.preventDefault();
 
-            evento.titulo = titulo.value;
-            evento.descricao = descricao.value;
-            evento.data = data.value;
-            evento.hora = hora.value;
-        
-            localStorage.setItem("eventos", JSON.stringify(eventosSalvos));
-        
-            if (localStorage.getItem('eventos')) {
-                mostraModal("Sucesso", "Evento atualizado com sucesso!");
-            }
+            const eventosAtualizados = eventosSalvos.filter(evento => evento.id !== id);
+            
+            localStorage.setItem('eventos', JSON.stringify(eventosAtualizados));
+
+            mostraModal("Sucesso", "Evento excluído com sucesso!");
+        });
+
+        document.getElementById("no").addEventListener("click", () => {
+            window.location.href = "index.html";
         });
     } else {
         mostraModal("Erro", "Ocorreu um erro e o evento não pôde ser encontrado!");
@@ -73,4 +66,12 @@ function mostraModal(msg1, msg2) {
             window.location.href = "index.html";
         }
     };
+}
+
+function formatData( dt ) {
+    const data = dt.split("-");
+    const dia = data[2];
+    const mes = data[1];
+    const ano = data[0];
+    return dataFormatada = `${dia}/${mes}/${ano}`;
 }

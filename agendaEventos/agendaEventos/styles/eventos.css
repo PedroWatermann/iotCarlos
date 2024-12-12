@@ -128,12 +128,12 @@ main button[type="submit"] {
     cursor: pointer;
     border-radius: 6px;
     font-size: 1em;
-    box-shadow: inset 0 0 20px #5d9bfc;
+    box-shadow: inset 0 0 20px rgba(0, 191, 255, 0.5);
     transition: background-color 0.3s ease;
 }
 
 main button[type="submit"]:hover {
-    background-color: #4688d1;
+    background-color: rgba(0, 191, 255, 0.5);
 }
 
 aside {
@@ -212,12 +212,13 @@ footer {
 }
 
 #edit {
-    box-shadow: inset 0 0 20px rgba(255, 99, 71, 0.5);
+    border: 1px solid rgba(255, 166, 0, 0.5);
+    box-shadow: inset 0 0 20px rgba(255, 166, 0, 0.5);
     transition: background-color 0.3s ease;
 }
 
 #edit:hover {
-    background-color: tomato;
+    background-color: rgba(255, 166, 0, 0.5);
 }
 
 @media (max-width: 400px) {
