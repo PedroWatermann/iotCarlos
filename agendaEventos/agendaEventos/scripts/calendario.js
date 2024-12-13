@@ -1,19 +1,70 @@
 const content = document.querySelectorAll('.content');
 const link = window.location.href.toString();
+const btnLeft = document.getElementById("left");
+const btnRight = document.getElementById("right");
+const th = document.getElementById("mesAtual2");
+const today = document.getElementById("today");
+const urlParams = new URLSearchParams(window.location.search);
+const filter = Number(urlParams.get("filter"));
+
+let ano = new Date().getFullYear(); // 2024
+let mes = new Date().getMonth(); // 11 = dezembro
+let dia = new Date().getDay(); // 13 = 13/12/24
 
 window.onload = () => {
-    const th = document.getElementById("mesAtual2");
-    th.textContent = mesAtual();
+    th.textContent = mesAtual(mes) + ' - ' + ano;
 
     if (link.includes("calendario")) {
         const calendar = document.querySelector("#calendario");
         calendar.classList.add("page");
     }
 
-    adicionaOsDiasDoMes(2024, 12);
+    if (filter == "day") {
 
-    temEvento();
+    } else if (filter == "week") {
+
+    } else {
+        adicionaOsDiasDoMes(ano, mes + 1);
+        temEvento();
+    }
 };
+
+btnLeft.addEventListener("click", () => {
+    if (filter == "day") {
+        ano = mes == 0 && dia == 1 ? ano - 1 : ano;
+        mes = mes == 0 && dia == 1 ? 11 : mes - 1;
+    }  else if (filter == "week") {
+
+    } else {
+        ano = mes == 0 ? ano - 1 : ano;
+        mes = mes == 0 ? 11 : mes - 1;
+        adicionaOsDiasDoMes(ano, mes + 1);
+        temEvento();
+        th.textContent = mesAtual(mes) + ' - ' + ano;
+    }
+});
+
+btnRight.addEventListener("click", () => {
+    if (filter == "day") {
+
+    }  else if (filter == "week") {
+
+    } else {
+        ano = mes == 11 ? ano + 1 : ano;
+        mes = mes == 11 ? 0 : mes + 1;
+        adicionaOsDiasDoMes(ano, mes + 1);
+        temEvento();
+        th.textContent = mesAtual(mes) + ' - ' + ano;
+    }
+});
+
+today.addEventListener("click", () => {
+    ano = new Date().getFullYear();
+    mes = new Date().getMonth();
+    adicionaOsDiasDoMes(ano, mes + 1);
+    temEvento();
+    th.textContent = mesAtual(mes) + ' - ' + ano;
+});
 
 content.forEach(content => {
     content.addEventListener('click', event => {
@@ -62,9 +113,9 @@ function semanasNoMes(ano, mes) {
     return semanas;
 }
 
-function mesAtual() {
+function mesAtual(mesAt) {
     const data = new Date();
-    const mes = data.getMonth();
+    const mes = mesAt;
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     return meses[mes];
 }
@@ -104,7 +155,7 @@ function adicionaOsDiasDoMes(ano, mes) {
                     return (
                         dataEvento.getFullYear() === ano &&
                         dataEvento.getMonth() + 1 === mes &&
-                        dataEvento.getDate() === dia
+                        dataEvento.getDate() === dia - 1
                     );
                 });
 

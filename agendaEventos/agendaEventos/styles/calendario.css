@@ -177,16 +177,19 @@ footer {
 
 .content {
     font-size: 0.75em;
-    text-align: justify;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0px;
     white-space: nowrap;
     transition: all 0.1s ease-in-out;
     max-width: 90%;
+    display: inline-block;
+
+    position: relative;
 }
 
 .content:hover {
+    max-width: 100%;
     padding: 5px;
     overflow: visible;
 
@@ -270,6 +273,51 @@ footer {
     padding-left: 20px;
 }
 
+.setas {
+    width: 50px;
+    height: 50px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: transparent;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: cursive;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0, 0, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.setas:hover {
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+#calendar {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#calendar th {
+    text-align: center;
+    /* Centraliza o conteúdo das células */
+    padding: 10px;
+    /* Adiciona espaçamento interno */
+    border: 1px solid #ccc;
+    /* Adiciona borda para visualização */
+}
+
+#calendar #mesAtual th {
+    width: auto;
+    /* Permite que as larguras sejam redistribuídas conforme os pesos */
+}
+
+#today {
+    margin-top: 10px;
+    padding: 5px;
+    height: auto;
+    width: 90%;
+}
+
 @media (max-width: 400px) {
     html {
         font-size: 14px;
@@ -338,5 +386,33 @@ footer {
 
     .ul_do_titulo {
         padding-left: 5px;
+    }
+
+    .setas {
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgba(0, 0, 255, 0.5);
+        box-shadow: inset 0 0 10px rgba(0, 0, 255, 0.5);
+        border-radius: 6px;
+        background-color: transparent;
+        color: whitesmoke;
+        transition: all 0.3s ease;
+    }
+
+    .setas:hover {
+        background-color: rgba(0, 0, 255, 0.3);
+    }
+
+    .setas p {
+        font-weight: bold;
+        font-size: 1.5em;
+        font-family: cursive;
+    }
+
+    #today {
+        margin-top: 10px;
+        padding: 5px;
+        height: auto;
+        width: 90%;
     }
 }

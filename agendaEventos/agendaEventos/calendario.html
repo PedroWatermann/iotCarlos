@@ -34,11 +34,17 @@
         </div>
 
         <div class="divTabela">
-            
+
             <table id="calendar">
                 <thead>
                     <tr id="mesAtual">
-                        <th id="mesAtual2" colspan="7" style="font-size: 1.7em;"></th>
+                        <th>
+                            <input type="button" value="<" class="setas" id="left">
+                        </th>
+                        <th id="mesAtual2" style="font-size: 1.7em;" colspan="5"></th>
+                        <th>
+                            <input type="button" value=">" class="setas" id="right">
+                        </th>
                     </tr>
                     <tr>
                         <th>Dom</th>
@@ -50,59 +56,10 @@
                         <th>Sáb</th>
                     </tr>
                 </thead>
-                <tbody id="week">
-                    <!--<tr>
-                        <td>
-                            <div class="container">
-                                <p class="day">1</p>
-                                <p class="content"></p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container">
-                                <p class="day">2</p>
-                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
-                                    commodo tempor. </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container">
-                                <p class="day">3</p>
-                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
-                                    commodo tempor. </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container">
-                                <p class="day">4</p>
-                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
-                                    commodo tempor. </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container">
-                                <p class="day">5</p>
-                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
-                                    commodo tempor. </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container">
-                                <p class="day">6</p>
-                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor. Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Per aumento de cachacis, eu reclamis. Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta. </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container">
-                                <p class="day">7</p>
-                                <p class="content"> Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros
-                                    commodo tempor. </p>
-                            </div>
-                        </td>
-                    </tr>-->
-                </tbody>
+                <tbody id="week"></tbody>
             </table>
         </div>
+        <input type="button" value="Hoje" id="today" class="setas">
     </main>
 
     <aside>
