@@ -416,3 +416,8 @@ footer {
         width: 90%;
     }
 }
+
+.divTabela.soalteraadiv {
+    width: 60%;
+    height: fit-content;
+}

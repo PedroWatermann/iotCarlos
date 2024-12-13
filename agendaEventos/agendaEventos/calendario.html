@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="divTabela">
+        <div class="divTabela" id="divTabela">
 
             <table id="calendar">
                 <thead>
@@ -41,12 +41,14 @@
                         <th>
                             <input type="button" value="<" class="setas" id="left">
                         </th>
+
                         <th id="mesAtual2" style="font-size: 1.7em;" colspan="5"></th>
+
                         <th>
                             <input type="button" value=">" class="setas" id="right">
                         </th>
                     </tr>
-                    <tr>
+                    <tr id="weekDays">
                         <th>Dom</th>
                         <th>Seg</th>
                         <th>Ter</th>
@@ -56,6 +58,7 @@
                         <th>Sáb</th>
                     </tr>
                 </thead>
+                
                 <tbody id="week"></tbody>
             </table>
         </div>

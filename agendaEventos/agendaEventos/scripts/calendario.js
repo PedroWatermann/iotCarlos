@@ -4,67 +4,95 @@ const btnLeft = document.getElementById("left");
 const btnRight = document.getElementById("right");
 const th = document.getElementById("mesAtual2");
 const today = document.getElementById("today");
-const urlParams = new URLSearchParams(window.location.search);
-const filter = Number(urlParams.get("filter"));
 
 let ano = new Date().getFullYear(); // 2024
 let mes = new Date().getMonth(); // 11 = dezembro
 let dia = new Date().getDay(); // 13 = 13/12/24
 
 window.onload = () => {
-    th.textContent = mesAtual(mes) + ' - ' + ano;
-
-    if (link.includes("calendario")) {
-        const calendar = document.querySelector("#calendario");
-        calendar.classList.add("page");
-    }
+    let filter = verificaUrlParams();
 
     if (filter == "day") {
+        th.colSpan = 3;
+        th.textContent = mesAtual(mes) + ' - ' + ano;
 
+        adicionaDia();
+
+        temEvento();
     } else if (filter == "week") {
+        th.textContent = mesAtual(mes) + ' - ' + ano;
 
-    } else {
+        const semanaAtual = new Date();
+        let inicioSemana = new Date(semanaAtual.setDate(semanaAtual.getDate() - semanaAtual.getDay()));
+        let fimSemana = new Date(inicioSemana);
+        fimSemana.setDate(inicioSemana.getDate() + 6);
+
+        adicionaOsDiasDaSemana(inicioSemana);
+
+        btnLeft.addEventListener("click", () => {
+            inicioSemana.setDate(inicioSemana.getDate() - 7);
+            fimSemana.setDate(fimSemana.getDate() - 7);
+            adicionaOsDiasDaSemana(inicioSemana);
+            temEvento();
+        });
+
+        btnRight.addEventListener("click", () => {
+            inicioSemana.setDate(inicioSemana.getDate() + 7);
+            fimSemana.setDate(fimSemana.getDate() + 7);
+            adicionaOsDiasDaSemana(inicioSemana);
+            temEvento();
+        });
+
+        today.addEventListener("click", () => {
+            const hoje = new Date();
+            inicioSemana = new Date(hoje.setDate(hoje.getDate() - hoje.getDay()));
+            fimSemana = new Date(inicioSemana);
+            fimSemana.setDate(inicioSemana.getDate() + 6);
+            adicionaOsDiasDaSemana(inicioSemana);
+            temEvento();
+        });
+
+        temEvento();
+    } else if (filter == "month") {
+        th.textContent = mesAtual(mes) + ' - ' + ano;
+
+        if (link.includes("calendario")) {
+            const calendar = document.querySelector("#calendario");
+            calendar.classList.add("page");
+        }
+
+        btnLeft.addEventListener("click", () => {
+            ano = mes == 0 ? ano - 1 : ano;
+            mes = mes == 0 ? 11 : mes - 1;
+            adicionaOsDiasDoMes(ano, mes + 1);
+            temEvento();
+            th.textContent = mesAtual(mes) + ' - ' + ano;
+        });
+
+        btnRight.addEventListener("click", () => {
+            ano = mes == 11 ? ano + 1 : ano;
+            mes = mes == 11 ? 0 : mes + 1;
+            adicionaOsDiasDoMes(ano, mes + 1);
+            temEvento();
+            th.textContent = mesAtual(mes) + ' - ' + ano;
+        });
+
+        today.addEventListener("click", () => {
+            ano = new Date().getFullYear();
+            mes = new Date().getMonth();
+            adicionaOsDiasDoMes(ano, mes + 1);
+            temEvento();
+            th.textContent = mesAtual(mes) + ' - ' + ano;
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
         adicionaOsDiasDoMes(ano, mes + 1);
         temEvento();
     }
 };
-
-btnLeft.addEventListener("click", () => {
-    if (filter == "day") {
-        ano = mes == 0 && dia == 1 ? ano - 1 : ano;
-        mes = mes == 0 && dia == 1 ? 11 : mes - 1;
-    }  else if (filter == "week") {
-
-    } else {
-        ano = mes == 0 ? ano - 1 : ano;
-        mes = mes == 0 ? 11 : mes - 1;
-        adicionaOsDiasDoMes(ano, mes + 1);
-        temEvento();
-        th.textContent = mesAtual(mes) + ' - ' + ano;
-    }
-});
-
-btnRight.addEventListener("click", () => {
-    if (filter == "day") {
-
-    }  else if (filter == "week") {
-
-    } else {
-        ano = mes == 11 ? ano + 1 : ano;
-        mes = mes == 11 ? 0 : mes + 1;
-        adicionaOsDiasDoMes(ano, mes + 1);
-        temEvento();
-        th.textContent = mesAtual(mes) + ' - ' + ano;
-    }
-});
-
-today.addEventListener("click", () => {
-    ano = new Date().getFullYear();
-    mes = new Date().getMonth();
-    adicionaOsDiasDoMes(ano, mes + 1);
-    temEvento();
-    th.textContent = mesAtual(mes) + ' - ' + ano;
-});
 
 content.forEach(content => {
     content.addEventListener('click', event => {
@@ -114,8 +142,30 @@ function semanasNoMes(ano, mes) {
 }
 
 function mesAtual(mesAt) {
-    const data = new Date();
     const mes = mesAt;
+    const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    return meses[mes];
+}
+
+// Função para verificar o filtro que o usuário escolheu para a visualização dos eventos
+function verificaUrlParams() {
+    const paramsUrl = new URLSearchParams(window.location.search);
+    const filter = paramsUrl.get("filter").toString();
+
+    if (filter === "day") {
+        return "day";
+    }
+    if (filter === "week") {
+        return "week";
+    }
+    if (filter === "month") {
+        return "month";
+    }
+
+    return "";
+}
+
+function mesAtualTexto(mes) {
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     return meses[mes];
 }
@@ -185,4 +235,137 @@ function adicionaOsDiasDoMes(ano, mes) {
         }
         week.appendChild(tr);
     }
+}
+
+function adicionaOsDiasDaSemana(inicioSemana) {
+    const week = document.getElementById("week");
+    week.innerHTML = ""; // Limpa a semana atual
+
+    const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
+    const mesAtual = inicioSemana.getMonth(); // Obtém o mês inicial da semana
+
+    // Cria a linha única para a semana
+    const tr = document.createElement("tr");
+
+    for (let i = 0; i < 7; i++) {
+        const diaAtual = new Date(inicioSemana);
+        diaAtual.setDate(inicioSemana.getDate() + i); // Calcula o dia correspondente
+
+        const td = document.createElement("td");
+        const div = document.createElement("div");
+        div.className = "container";
+
+        const p1 = document.createElement("p");
+        p1.className = "day";
+
+        const p2 = document.createElement("p");
+        p2.className = "content";
+
+        // Exibe apenas os dias do mês atual
+        if (diaAtual.getMonth() === mesAtual) {
+            p1.textContent = diaAtual.getDate();
+
+            const eventosDoDia = eventos.filter(evento => {
+                const dataEvento = new Date(evento.data);
+                return (
+                    dataEvento.getFullYear() === diaAtual.getFullYear() &&
+                    dataEvento.getMonth() === diaAtual.getMonth() &&
+                    dataEvento.getDate() === diaAtual.getDate() - 1
+                );
+            });
+
+            if (eventosDoDia.length > 0) {
+                const ul = document.createElement("ul");
+                ul.className = "ul_do_titulo";
+                eventosDoDia.forEach(evento => {
+                    const li = document.createElement("li");
+                    li.textContent = evento.titulo;
+                    ul.appendChild(li);
+                });
+                p2.appendChild(ul);
+            } else {
+                p2.textContent = ""; // Sem eventos
+            }
+        } else {
+            // Deixa os dias de outros meses vazios
+            p1.textContent = "";
+            p2.textContent = "";
+        }
+
+        div.appendChild(p1);
+        div.appendChild(p2);
+        td.appendChild(div);
+        tr.appendChild(td);
+    }
+
+    week.appendChild(tr); // Adiciona a linha à tabela da semana
+
+    // Ajusta o título do mês para refletir o mês da semana atual
+    const th = document.getElementById("mesAtual2");
+    th.textContent = mesAtualTexto(mesAtual) + " - " + inicioSemana.getFullYear();
+}
+
+function adicionaDia() {
+    const weekDays = document.getElementById("weekDays");
+    weekDays.innerHTML = "";
+
+    const th = document.createElement("th");
+    const diasDaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+    th.textContent = diasDaSemana[dia];
+    th.colSpan = 5;
+
+    weekDays.appendChild(th);
+
+    const week = document.getElementById("week");
+    week.innerHTML = "";
+
+    const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
+
+    const tr = document.createElement("tr");
+
+    const td = document.createElement("td");
+
+    const div = document.createElement("div");
+    div.className = "container";
+    div.style.width = "100%";
+
+    const p1 = document.createElement("p");
+    p1.className = "day";
+    p1.textContent = new Date().getDate();;
+
+    const p2 = document.createElement("p");
+    p2.className = "content";
+    const eventosDoDia = eventos.filter(evento => {
+        const dataEvento = new Date(evento.data);
+        return (
+            dataEvento.getFullYear() === ano &&
+            dataEvento.getMonth() + 1 === mes &&
+            dataEvento.getDate() === new Date().getDate()
+        );
+    });
+    if (eventosDoDia.length > 0) {
+        const ul = document.createElement("ul");
+        ul.className = "ul_do_titulo";
+        eventosDoDia.forEach(evento => {
+            const li = document.createElement("li");
+            li.textContent = evento.titulo;
+            ul.appendChild(li);
+        });
+        p2.appendChild(ul);
+    } else {
+        p2.textContent = "";
+    }
+
+    div.appendChild(p1);
+    div.appendChild(p2);
+
+    const divTabela = document.querySelector("#divTabela");
+    divTabela.classList.add("soalteraadiv");
+
+    td.appendChild(div);
+    
+    td.colSpan = 5;
+    tr.appendChild(td);
+
+    week.appendChild(tr);
 }
