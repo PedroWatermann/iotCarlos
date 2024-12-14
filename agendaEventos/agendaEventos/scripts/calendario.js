@@ -7,16 +7,75 @@ const today = document.getElementById("today");
 
 let ano = new Date().getFullYear(); // 2024
 let mes = new Date().getMonth(); // 11 = dezembro
-let dia = new Date().getDay(); // 13 = 13/12/24
+let dia = new Date().getDate(); // Retorna o dia atual
+
 
 window.onload = () => {
     let filter = verificaUrlParams();
 
     if (filter == "day") {
+        today.style.width = "60%";
+
         th.colSpan = 3;
         th.textContent = mesAtual(mes) + ' - ' + ano;
 
         adicionaDia();
+
+        btnLeft.addEventListener("click", () => {
+            if (dia == 1) {
+                let oDia = new Date(ano, mes, 0).getDate();
+                dia = oDia;
+
+                if (mes == 0) {
+                    mes = 11;
+                    ano -= 1;
+                } else {
+                    mes -= 1;
+                }
+            } else {
+                dia -= 1;
+            }
+
+            th.textContent = mesAtual(mes) + ' - ' + ano;
+
+            adicionaDia();
+
+            temEvento();
+        });
+
+        btnRight.addEventListener("click", () => {
+            let oDia = new Date(ano, mes + 1, 0).getDate();
+            if (dia == oDia) {
+                dia = 1;
+
+                if (mes == 11) {
+                    ano += 1;
+                    mes = 0;
+                } else {
+                    mes += 1;
+                }
+            } else {
+                dia += 1;
+            }
+
+            th.textContent = mesAtual(mes) + ' - ' + ano;
+
+            adicionaDia();
+
+            temEvento();
+        });
+
+        today.addEventListener("click", () => {
+            ano = new Date().getFullYear(); // 2024
+            mes = new Date().getMonth(); // 11 = dezembro
+            dia = new Date().getDate(); // Retorna o dia atual
+
+            th.textContent = mesAtual(mes) + ' - ' + ano;
+
+            adicionaDia();
+
+            temEvento();
+        });
 
         temEvento();
     } else if (filter == "week") {
@@ -311,7 +370,9 @@ function adicionaDia() {
 
     const th = document.createElement("th");
     const diasDaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-    th.textContent = diasDaSemana[dia];
+    let dataCompleta = `${ano}-${mes + 1}-${dia}`; console.log(typeof(dataCompleta));
+    
+    th.textContent = diasDaSemana[new Date(dataCompleta).getUTCDay()];    
     th.colSpan = 5;
 
     weekDays.appendChild(th);
@@ -331,16 +392,17 @@ function adicionaDia() {
 
     const p1 = document.createElement("p");
     p1.className = "day";
-    p1.textContent = new Date().getDate();;
+    p1.textContent = dia;
 
     const p2 = document.createElement("p");
     p2.className = "content";
     const eventosDoDia = eventos.filter(evento => {
         const dataEvento = new Date(evento.data);
+
         return (
             dataEvento.getFullYear() === ano &&
-            dataEvento.getMonth() + 1 === mes &&
-            dataEvento.getDate() === new Date().getDate()
+            dataEvento.getMonth() === mes &&
+            dataEvento.getDate() === dia - 1
         );
     });
     if (eventosDoDia.length > 0) {
@@ -363,7 +425,7 @@ function adicionaDia() {
     divTabela.classList.add("soalteraadiv");
 
     td.appendChild(div);
-    
+
     td.colSpan = 5;
     tr.appendChild(td);
 
