@@ -50,6 +50,9 @@ window.onload = () => {
 };
 
 function mostraModal(msg1, msg2) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const local = urlParams.get("local");
+
     var modal = document.getElementById("notificationModal");
     var span = document.getElementsByClassName("close")[0];
 
@@ -61,16 +64,28 @@ function mostraModal(msg1, msg2) {
     modal.style.display = "block";
 
     setTimeout(() => {
-        window.location.href = "index.html";        
+        if (local) {
+            history.go(-1);
+        } else {
+            window.location.href = "index.html";        
+        }
     }, 3000);
 
     span.onclick = function () {
-        window.location.href = "index.html";
+        if (local) {
+            history.go(-1);
+        } else {
+            window.location.href = "index.html";        
+        }
     };
 
     window.onclick = function (e) {
         if (e.target == modal) {
-            window.location.href = "index.html";
+            if (local) {
+                history.go(-1);
+            } else {
+                window.location.href = "index.html";        
+            }
         }
     };
 }

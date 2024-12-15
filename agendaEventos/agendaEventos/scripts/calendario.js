@@ -274,7 +274,11 @@ function adicionaOsDiasDoMes(ano, mes) {
                     ul.className = "ul_do_titulo";
                     eventosDoDia.forEach(evento => {
                         const li = document.createElement("li");
-                        li.textContent = evento.titulo;
+                        const linkdop = document.createElement("a");
+                        linkdop.textContent = evento.titulo;
+                        linkdop.classList.add("linkdop");
+                        linkdop.href = `editEventos.html?id=${evento.id}&local=cal`;
+                        li.appendChild(linkdop);
                         ul.appendChild(li);
                     });
                     p2.appendChild(ul);

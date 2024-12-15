@@ -424,3 +424,11 @@ footer {
 .divTabela.soalteraadiv {
     width: 60%;
 }
+
+.linkdop {
+    text-decoration: none;
+    color: whitesmoke;
+}
+.linkdop:hover {
+    text-decoration: underline;
+}
