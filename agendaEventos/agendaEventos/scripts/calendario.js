@@ -94,13 +94,14 @@ window.onload = () => {
             adicionaOsDiasDaSemana(inicioSemana);
             temEvento();
         });
-
+        
         btnRight.addEventListener("click", () => {
             inicioSemana.setDate(inicioSemana.getDate() + 7);
             fimSemana.setDate(fimSemana.getDate() + 7);
             adicionaOsDiasDaSemana(inicioSemana);
             temEvento();
         });
+        
 
         today.addEventListener("click", () => {
             const hoje = new Date();
@@ -301,6 +302,81 @@ function adicionaOsDiasDaSemana(inicioSemana) {
     week.innerHTML = ""; // Limpa a semana atual
 
     const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
+
+    // Cria a linha única para a semana
+    const tr = document.createElement("tr");
+
+    for (let i = 0; i < 7; i++) {
+        const diaAtual = new Date(inicioSemana);
+        diaAtual.setDate(inicioSemana.getDate() + i);
+
+        const td = document.createElement("td");
+        const div = document.createElement("div");
+        div.className = "container";
+
+        const p1 = document.createElement("p");
+        p1.className = "day";
+
+        const p2 = document.createElement("p");
+        p2.className = "content";
+
+        // Sempre exibe os dias, mesmo que sejam de outro mês
+        p1.textContent = diaAtual.getDate();
+
+        const eventosDoDia = eventos.filter(evento => {
+            const dataEvento = new Date(evento.data);
+            return (
+                dataEvento.getFullYear() === diaAtual.getFullYear() &&
+                dataEvento.getMonth() === diaAtual.getMonth() &&
+                dataEvento.getDate() === diaAtual.getDate()
+            );
+        });
+
+        if (eventosDoDia.length > 0) {
+            const ul = document.createElement("ul");
+            ul.className = "ul_do_titulo";
+            eventosDoDia.forEach(evento => {
+                const li = document.createElement("li");
+                li.textContent = evento.titulo;
+                ul.appendChild(li);
+            });
+            p2.appendChild(ul);
+        } else {
+            p2.textContent = ""; // Texto caso não haja eventos
+        }
+
+        div.appendChild(p1);
+        div.appendChild(p2);
+        td.appendChild(div);
+
+        tr.appendChild(td);
+    }
+
+    week.appendChild(tr);
+
+    // Ajusta o título para incluir os dois meses (se necessário)
+    const th = document.getElementById("mesAtual2");
+    const mesInicial = inicioSemana.getMonth();
+    const mesFinal = new Date(inicioSemana).setDate(inicioSemana.getDate() + 6);
+    const mesFinalTexto = new Date(mesFinal).getMonth();
+
+    if (mesInicial !== mesFinalTexto) {
+        th.textContent =
+            mesAtualTexto(mesInicial) +
+            " / " +
+            mesAtualTexto(mesFinalTexto) +
+            " - " +
+            inicioSemana.getFullYear();
+    } else {
+        th.textContent = mesAtualTexto(mesInicial) + " - " + inicioSemana.getFullYear();
+    }
+}
+
+/*function adicionaOsDiasDaSemana(inicioSemana) {
+    const week = document.getElementById("week");
+    week.innerHTML = ""; // Limpa a semana atual
+
+    const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
     const mesAtual = inicioSemana.getMonth(); // Obtém o mês inicial da semana
 
     // Cria a linha única para a semana
@@ -362,7 +438,7 @@ function adicionaOsDiasDaSemana(inicioSemana) {
     // Ajusta o título do mês para refletir o mês da semana atual
     const th = document.getElementById("mesAtual2");
     th.textContent = mesAtualTexto(mesAtual) + " - " + inicioSemana.getFullYear();
-}
+}*/
 
 function adicionaDia() {
     const weekDays = document.getElementById("weekDays");
