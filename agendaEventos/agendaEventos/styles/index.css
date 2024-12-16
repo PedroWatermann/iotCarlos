@@ -169,6 +169,17 @@ footer {
     background-color: rgba(255, 166, 0, 0.5);
 }
 
+.add {
+    margin-top: 20px;
+    border: 1px solid rgba(0, 191, 255, 0.5);
+    box-shadow: inset 0 0 10px rgba(0, 191, 255, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.add:hover {
+    background-color: rgba(0, 191, 255, 0.5);
+}
+
 .glow {
     background-color: transparent;
     -webkit-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
@@ -203,5 +214,9 @@ footer {
         -webkit-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
         -moz-box-shadow: inset 0px 0px 5px 0px rgba(45, 255, 196, 1);
         box-shadow: inset 0px 0px 10px 0px rgba(45, 255, 196, 1);
+    }
+
+    .add {
+        margin-top: 10px;
     }
 }
