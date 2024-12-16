@@ -1,3 +1,33 @@
+const eventList = document.getElementById('event-list');
+
+window.onload = () => {
+    console.log("carregado");
+
+    const add = document.createElement("button");
+    add.textContent = "Adicionar evento";
+    add.className = "btn";
+    add.classList.add("add");
+    add.onclick = () => {
+        window.location.href = "addEventos.html";
+    };
+    const elemento = document.querySelector("#conteudo");
+    if (!eventList.contains(elemento)) {
+        eventList.appendChild(add);
+        console.log("deu certo s");
+
+    } else {
+        eventList.removeChild(add);
+        console.log("deu certo n");
+
+    }
+
+    const linkDaPagina = location.href;
+    if (linkDaPagina.includes("index")) {
+        const index = document.querySelector("#index");
+        index.classList.add("page");
+    }
+};
+
 // Obtém os dados do localStorage
 const eventos = JSON.parse(localStorage.getItem("eventos"));
 
@@ -44,31 +74,6 @@ if (eventos) {
         eventList.appendChild(li);
     });
 }
-
-const eventList = document.getElementById('event-list');
-
-window.onload = () => {
-    const linkDaPagina = location.href;
-    if (linkDaPagina.includes("index")) {
-        const index = document.querySelector("#index");
-        index.classList.add("page");
-    }
-
-    const add = document.createElement("button");
-    add.textContent = "Adicionar evento";
-    add.className = "btn";
-    add.classList.add("add");
-    add.onclick = () => {
-        window.location.href = "addEventos.html";
-    };
-    const elemento = document.querySelector("#conteudo");
-    if (!eventList.contains(elemento)) {
-        add.disabled = false;
-        eventList.appendChild(add);
-    } else {
-        eventList.removeChild(add);
-    }
-};
 
 function formatData(dt) {
     const data = dt.split("-");

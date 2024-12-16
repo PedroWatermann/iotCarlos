@@ -20,6 +20,7 @@ window.onload = () => {
     const descricao = document.getElementById("description");
     const data = document.getElementById("date");
     const hora = document.getElementById("time");
+    const lemb = document.getElementById("lembrete");
 
     const eventosSalvos = eventos();
     const evento = eventosSalvos.find(evento => evento.id === id);
@@ -29,6 +30,9 @@ window.onload = () => {
         descricao.value = evento.descricao;
         data.value = evento.data;
         hora.value = evento.hora;
+        if (evento.lembrete) {
+            lemb.checked = true;
+        }
 
         document.getElementById("edit").addEventListener("click", (ev) => {
             ev.preventDefault();
@@ -37,6 +41,11 @@ window.onload = () => {
             evento.descricao = descricao.value;
             evento.data = data.value;
             evento.hora = hora.value;
+            if (lemb.checked) {
+                evento.lembrete = true;
+            } else {
+                evento.lembrete = false;
+            }
         
             localStorage.setItem("eventos", JSON.stringify(eventosSalvos));
         

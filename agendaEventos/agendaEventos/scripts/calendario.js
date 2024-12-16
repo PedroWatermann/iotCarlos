@@ -94,14 +94,14 @@ window.onload = () => {
             adicionaOsDiasDaSemana(inicioSemana);
             temEvento();
         });
-        
+
         btnRight.addEventListener("click", () => {
             inicioSemana.setDate(inicioSemana.getDate() + 7);
             fimSemana.setDate(fimSemana.getDate() + 7);
             adicionaOsDiasDaSemana(inicioSemana);
             temEvento();
         });
-        
+
 
         today.addEventListener("click", () => {
             const hoje = new Date();
@@ -341,7 +341,11 @@ function adicionaOsDiasDaSemana(inicioSemana) {
             ul.className = "ul_do_titulo";
             eventosDoDia.forEach(evento => {
                 const li = document.createElement("li");
-                li.textContent = evento.titulo;
+                const linkdop = document.createElement("a");
+                linkdop.textContent = evento.titulo;
+                linkdop.classList.add("linkdop");
+                linkdop.href = `editEventos.html?id=${evento.id}&local=cal`;
+                li.appendChild(linkdop);
                 ul.appendChild(li);
             });
             p2.appendChild(ul);
@@ -376,83 +380,15 @@ function adicionaOsDiasDaSemana(inicioSemana) {
     }
 }
 
-/*function adicionaOsDiasDaSemana(inicioSemana) {
-    const week = document.getElementById("week");
-    week.innerHTML = ""; // Limpa a semana atual
-
-    const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
-    const mesAtual = inicioSemana.getMonth(); // Obtém o mês inicial da semana
-
-    // Cria a linha única para a semana
-    const tr = document.createElement("tr");
-
-    for (let i = 0; i < 7; i++) {
-        const diaAtual = new Date(inicioSemana);
-        diaAtual.setDate(inicioSemana.getDate() + i); // Calcula o dia correspondente
-
-        const td = document.createElement("td");
-        const div = document.createElement("div");
-        div.className = "container";
-
-        const p1 = document.createElement("p");
-        p1.className = "day";
-
-        const p2 = document.createElement("p");
-        p2.className = "content";
-
-        // Exibe apenas os dias do mês atual
-        if (diaAtual.getMonth() === mesAtual) {
-            p1.textContent = diaAtual.getDate();
-
-            const eventosDoDia = eventos.filter(evento => {
-                const dataEvento = new Date(evento.data);
-                return (
-                    dataEvento.getFullYear() === diaAtual.getFullYear() &&
-                    dataEvento.getMonth() === diaAtual.getMonth() &&
-                    dataEvento.getDate() === diaAtual.getDate() - 1
-                );
-            });
-
-            if (eventosDoDia.length > 0) {
-                const ul = document.createElement("ul");
-                ul.className = "ul_do_titulo";
-                eventosDoDia.forEach(evento => {
-                    const li = document.createElement("li");
-                    li.textContent = evento.titulo;
-                    ul.appendChild(li);
-                });
-                p2.appendChild(ul);
-            } else {
-                p2.textContent = ""; // Sem eventos
-            }
-        } else {
-            // Deixa os dias de outros meses vazios
-            p1.textContent = "";
-            p2.textContent = "";
-        }
-
-        div.appendChild(p1);
-        div.appendChild(p2);
-        td.appendChild(div);
-        tr.appendChild(td);
-    }
-
-    week.appendChild(tr); // Adiciona a linha à tabela da semana
-
-    // Ajusta o título do mês para refletir o mês da semana atual
-    const th = document.getElementById("mesAtual2");
-    th.textContent = mesAtualTexto(mesAtual) + " - " + inicioSemana.getFullYear();
-}*/
-
 function adicionaDia() {
     const weekDays = document.getElementById("weekDays");
     weekDays.innerHTML = "";
 
     const th = document.createElement("th");
     const diasDaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-    let dataCompleta = `${ano}-${mes + 1}-${dia}`; console.log(typeof(dataCompleta));
-    
-    th.textContent = diasDaSemana[new Date(dataCompleta).getUTCDay()];    
+    let dataCompleta = `${ano}-${mes + 1}-${dia}`; console.log(typeof (dataCompleta));
+
+    th.textContent = diasDaSemana[new Date(dataCompleta).getUTCDay()];
     th.colSpan = 5;
 
     weekDays.appendChild(th);
@@ -490,7 +426,11 @@ function adicionaDia() {
         ul.className = "ul_do_titulo";
         eventosDoDia.forEach(evento => {
             const li = document.createElement("li");
-            li.textContent = evento.titulo;
+            const linkdop = document.createElement("a");
+            linkdop.textContent = evento.titulo;
+            linkdop.classList.add("linkdop");
+            linkdop.href = `editEventos.html?id=${evento.id}&local=cal`;
+            li.appendChild(linkdop);
             ul.appendChild(li);
         });
         p2.appendChild(ul);

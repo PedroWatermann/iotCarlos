@@ -12,13 +12,20 @@ window.onload = () => {
 document.getElementById("cadastrar").addEventListener("click", (event) => {
     event.preventDefault();
 
+    const lemb = document.getElementById("lembrete");
+
     let evento = {
         id: eventos.length > 0 ? Math.max(...eventos.map(evento => evento.id)) + 1 : 1,
         titulo: document.getElementById("title").value,
         descricao: document.getElementById("description").value,
         data: document.getElementById("date").value,
-        hora: document.getElementById("time").value
+        hora: document.getElementById("time").value,
+        lembrete: false
     };
+
+    if (lemb.checked) {
+        evento.lembrete = true;
+    }
 
     eventos.push(evento);
 

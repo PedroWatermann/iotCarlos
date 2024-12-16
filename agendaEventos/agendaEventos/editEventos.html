@@ -8,6 +8,67 @@
     <link rel="stylesheet" href="styles/eventos.css">
     <link rel="stylesheet" href="styles/modal.css">
     <link rel="shortcut icon" href="icons/calendar.ico" type="image/x-icon">
+    <style>
+        /* Esconde o checkbox original */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Estilo personalizado */
+        .custom-checkbox {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: #f3f3f3;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Estilo para o estado marcado */
+        input[type="checkbox"]:checked+.custom-checkbox {
+            background-color: rgba(0, 191, 255, 0.5);
+            border-color: rgba(0, 191, 255, 0.5);
+        }
+
+        /* Estilo para o ícone de marcação */
+        .custom-checkbox::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            top: -1px;
+            left: 4px;
+            display: none;
+        }
+
+        /* Exibe o ícone de marcação quando o checkbox está marcado */
+        input[type="checkbox"]:checked+.custom-checkbox::after {
+            display: block;
+        }
+
+        #lembrete {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 400px) {
+            .custom-checkbox {
+                width: 10px;
+                height: 10px;
+            }
+
+            .custom-checkbox::after {
+                width: 3px;
+                height: 6px;
+                top: 0px;
+                left: 3px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +79,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="calendario.html">Calendário</a></li>
+                <li><a href="calendario.html?filter=month">Calendário</a></li>
                 <li><a href="eventos.php" id="eventos">Eventos</a></li>
             </ul>
         </nav>
@@ -44,6 +105,11 @@
             </div>
 
             <button type="submit" id="edit" onclick="editarEvento()">Editar</button>
+
+            <label id="lembre">
+                <input type="checkbox" name="lembrete" id="lembrete">
+                <span class="custom-checkbox"></span>Lembrar-me 1h antes
+            </label>
 
             <div class="informacao">
                 <p class="info">são obrigatórios!</p>
